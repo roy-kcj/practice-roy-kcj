@@ -1,0 +1,30 @@
+---
+title: "US gdpPerCap"
+output: html_document
+date: "2023-02-06"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## R Markdown
+
+# Reading data from csv 
+```{r}
+data <- read.csv("https://raw.githubusercontent.com/yumouqiu/DS202-Spring2023/main/Lecture1_collaborative-environment/data/gapminder-5060.csv")
+head(data)
+
+```
+
+# Filter country to United States
+``` {r}
+us_data <- data %>% filter(country == "United States")
+head(us_data)
+```
+
+# Plot gdpPerCap Graph
+```{r}
+us_data %>% ggplot(aes(x = year, y = gdpPercap)) + geom_line()
+```
