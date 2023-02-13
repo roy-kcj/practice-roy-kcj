@@ -11,6 +11,16 @@ library(tidyverse)
 
 ## R Markdown
 
+# 3 tips to make working with Git/GitHub easier
+1. Create branches whenever applicable
+2. Always pull before push
+3. If you have issues using Git, StackOverflow and Git documentation are your friend
+
+
+
+
+
+
 # Reading data from csv 
 ```{r}
 data <- read.csv("https://raw.githubusercontent.com/yumouqiu/DS202-Spring2023/main/Lecture1_collaborative-environment/data/gapminder-5060.csv")

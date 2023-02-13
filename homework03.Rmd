@@ -1,0 +1,106 @@
+---
+title: 'Homework 3'
+author: "Roy Khoo"
+date: "2/10/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+#### Due: 2/17/2022 before 11:59pm. Submit in Canvas (file upload).
+
+1. Finish the in-class practice in Slides 3-12 in "Lecture 2-2-Practice for git", link: https://yumouqiu.github.io/DS202-Spring2023/Practice/practice01.html  
+    a. Download the RMarkdown file with these homework instructions to use as a template for your work. Make sure to replace "Your Name" with your name.  
+    b. In the RMarkdown file, write down table of team members, and their github repository links;   
+the number of successful pull requests you made, and the github repository to which you requested a change;  
+the number of pull requests you accepted, and the github repository from which you accepted.  
+    c. Write down a list with at least 3 tips of how to make working with git/github easier  
+
+2. Generate the graph of LifExp vs. gdpPercap for US, Canada (fixed data) and Australia by RMarkdown based on the data set "gapminder-5060", like what we did in the class.  
+Please use Github to collaborate on this problem. For example, one member can create the plot of US in his/her repository. The other member will fork this repository, add the result for the second country, and make a pull request for merging into the main repository. Each member should at least analyze one country and make at least one pull request. **Please submit the RMarkdown file, the output file, and the screen shot of the successful pull request and the merge.**
+
+3. Write a paragraph (~200 words) describing an example of what you consider data science. Write your paragraph in R Markdown. Include at least 
+    a. one link to a chart or an image and 
+    b. at least one itemized or enumerated list.
+    
+
+Note: your submission is supposed to be fully reproducible, i.e. the TA and I will 'knit' your submission in RStudio. Including the link to the image is the tricky part here. Make sure that you don't use any file structure that depends on your computing environment.
+
+
+For the submission: submit your solution in an **R Markdown file** and (just for insurance) submit the corresponding html (or Word) file with it. 
+
+# Q.1 - Table
+
+```{r}
+rckhoo_ans = c('https://github.com/roy-kcj/practice-roy-kcj', 'N/A', 'N/A', 'N/A', 'N/A')
+
+empty_ans = c('','','','','')
+
+
+tab <- matrix(c(rckhoo_ans, empty_ans), ncol=5, byrow=TRUE)
+
+colnames(tab) <- c('Repository Link', 'No. of Pull Req', 'Req Repo', 'No. of Pull Acpt', 'Acpt Repo')
+rownames(tab) <- c('Roy Khoo', 'Empty')
+tab
+```
+
+Tips for Git/GitHub
+1. Create branches whenever applicable
+2. Always pull before push
+3. If you have issues using Git, StackOverflow and Git documentation are your friend
+
+# Q.2 - LifeExp vs gdpPercap
+
+# Reading data from csv 
+```{r}
+data <- read.csv("https://raw.githubusercontent.com/yumouqiu/DS202-Spring2023/main/Lecture1_collaborative-environment/data/gapminder-5060.csv")
+head(data)
+```
+
+# Filter country to United States
+``` {r}
+us_data <- data %>% filter(country == "United States")
+head(us_data)
+```
+
+# Plot LifeExp vs GdpPerCap Graph
+```{r}
+us_data %>% ggplot(aes(x = gdpPercap, y = lifeExp, colour = country)) + geom_line() +
+  geom_line(data = data %>% filter(country %in% c("Canada", "Australia")))
+```
+
+# Fix issue with Canada LifeExp
+```{r}
+data %>% filter(year == 1957, country == 'Canada')
+data_fixed <- data %>% mutate(
+  lifeExp = replace(lifeExp, year==1957, 69.96)  
+)
+data_fixed
+```
+
+# Fixed Plot of LifeExp vs GdpPerCap Graph
+```{r}
+us_data %>% ggplot(aes(x = gdpPercap, y = lifeExp, colour = country)) + geom_line() +
+  geom_line(data = data_fixed %>% filter(country %in% c("Canada", "Australia")))
+```
+
+# Q.3 - Paragraph
+Data science is the work of manipulating, analyzing, and extracting relevant data available from any unstructured format in a way that would be beneficial/insightful to the person of interest. This could range anywhere from basic spreadsheet chart plots to statistic-driven programs like machine learning and so forth. In essence, any data science work would encompass a few criteria as listed.
+
+1. Gathering relevant data for selected problem
+2. Cleaning and processing of data
+3. Explore and analyze the data
+4. Building a model for prediction/forecasting
+5. Utilize the results in a meaningful manner
+
+For instance, the recently publicly released OpenAI chatbot, ChatGPT, is an actualization of data science that utilizes countless datasets on online speech patterns to train and replicate that on a machine. ChatGPT is trained through a process of human feedback (RLHF) in order to predict and also provide answers/conversation in a humanlike nature. 
+
+
+
+![OpenAI Logo](https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg){width=100, height=100}
+![ChatGPT Example](https://lh3.googleusercontent.com/VuYB13qqGkCPMef7G6XlvweQcE4QQwXwVfuHv0hoIryc3hjSxTqdFbSjGg2C7zXc8IUoNwq01jnsZJipZzRt0WtuPdPfosjkcAYvpTg9o5b86mdO3iAYvk8Lu9bhrn614NkCutz2m1sEQ012voiDHWzzJLlnYfMNWKj75MpoSh2vk2iIpMpAL7RSbVmQ1g){width=50%, height=50%}
+
+
