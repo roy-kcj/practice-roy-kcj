@@ -7,3 +7,10 @@ In the past month, what are the three main activities you have been doing at wor
 
 What are the three most important tools/strategies you use for organizing your work: GitLab, OneNote, Finish assignments by earliest due date
 
+
+
+Xuan Wen: 
+
+Writing programs.
+Doing homework x3.
+Schedule plan, Reminders, Notes
