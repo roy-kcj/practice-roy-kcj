@@ -37,13 +37,13 @@ For the submission: submit your solution in an **R Markdown file** and (just for
 ```{r}
 rckhoo_ans = c('https://github.com/roy-kcj/practice-roy-kcj', 1, 'https://github.com/xuanwenloo/practice1-xuanwenloo', 1, 'https://github.com/xuanwenloo/practice-roy-kcj')
 
-empty_ans = c('','','','','')
+xuanwenloo_ans = c('https://github.com/xuanwenloo/practice1-xuanwenloo',1,'https://github.com/roy-kcj/practice-roy-kcj',1, 'https://github.com/roy-kcj/practice1-xuanwenloo')
 
 
-tab <- matrix(c(rckhoo_ans, empty_ans), ncol=5, byrow=TRUE)
+tab <- matrix(c(rckhoo_ans, xuanwenloo_ans), ncol=5, byrow=TRUE)
 
 colnames(tab) <- c('Repository Link', 'No. of Pull Req', 'Req Repo', 'No. of Pull Acpt', 'Acpt Repo')
-rownames(tab) <- c('Roy Khoo', 'Empty')
+rownames(tab) <- c('Roy Khoo', 'Xuan Wen')
 tab
 ```
 
