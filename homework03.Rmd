@@ -35,7 +35,7 @@ For the submission: submit your solution in an **R Markdown file** and (just for
 # Q.1 - Table
 
 ```{r}
-rckhoo_ans = c('https://github.com/roy-kcj/practice-roy-kcj', 'N/A', 'N/A', 'N/A', 'N/A')
+rckhoo_ans = c('https://github.com/roy-kcj/practice-roy-kcj', 1, 'https://github.com/xuanwenloo/practice1-xuanwenloo', 1, 'https://github.com/xuanwenloo/practice1-xuanwenloo')
 
 empty_ans = c('','','','','')
 
